@@ -32,7 +32,7 @@ s.write(str(info))
 
 zip = 0
 
-# open a file in the given path with the directory open it with the read only privleges.
+# open a file in the given path with the directory open it with the read only privileges.
 #f = open('workfile', 'r')
 
 
