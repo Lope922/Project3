@@ -62,4 +62,5 @@ if response is None:
     print("There was an error trying to retrieve the flood details")
 else:
     record_flight_info(response)
+
 #todo look into async to see if the two programs need to be setup to communicate with eachother.
