@@ -4,8 +4,8 @@ import os.path
 
 # trying to refactor as a class that only reads and uses the flood data  & should be able to be adapted easily for snow
 class Part1:
-    CONSTANT_PATH = "relative path part1"
-    CONSTANT_PATH_PART_2 = "relative path part2"
+   # CONSTANT_PATH = "relative path part1"
+   # CONSTANT_PATH_PART_2 = "relative path part2"
     def __init__(self):
         return self
 
@@ -52,10 +52,11 @@ def request_basic_weather_info():
     '''Requires a request.content to be passed in'''
 def save_warning_info(the_deets):
     # once i find a more effienct way of doing this adjust path # todo <-----=====
-    save_path = "C:/Users\CaLs_Rig/PycharmProjects/Project3/Program/Response_info/"
-    file_name = "BadWeatherInfo.txt"
-    save = open(save_path + file_name, "a")
+
+    save_path ="C:/Users/Lope/PycharmProjects/Project3/Seperator/NWSInfo.txt"
+    save = open(save_path ,"a")
     #info
+
     # convert its contents to string fromat
     save.write(str(the_deets))
     # close the file so that other resources can use it

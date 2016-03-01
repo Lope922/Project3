@@ -5,12 +5,12 @@ class PostalCode:
 
     def __init__(self):
         return self
-
+an_easy_path = "C:/Users/Lope/PycharmProjects/Project3/Seperator/"
 #does return zip code so need to assign a value equal to this
 ''' :parameter set equal to something '''
 def get_zipcode_response():
     #todo adjust this path as well
-    zipinfo = (open('C:/Users/CaLs_Rig/PycharmProjects/Project3/Program/Response_info/users_zip_code.txt', 'r'))
+    zipinfo = (open(an_easy_path + 'users_zip_code.txt', 'r'))
 
     # read the first line from the file that contains the zip that's all we need
     a = zipinfo.readline()
@@ -21,10 +21,12 @@ def get_zipcode_response():
 # pass in the zip code retrieved from file needs the file location/name passed in for testing purposes only
 #Only need to run this when the zip changed
 def zip_write_to_file(zipResponse):
-    zip_response = zipResponse
-    htmldata = open("zip_code_response.html", mode="w+", buffering=1, encoding="UTF-8")
 
-    htmldata.write(str(zip_response.text))
+    #zip_warning_file = open("ziplistWarning.txt", mode="w+")
+    zip_response = zipResponse
+    htmldata = open(an_easy_path +"zip_code_response.html", mode="w+", buffering=1, encoding="UTF-8")
+
+    htmldata.write(str(zip_response))
     htmldata.close()
 
 
@@ -47,12 +49,19 @@ def make_zip_request(zip_from_file):
 
 # this method reads the current file instead of the response as originally programmed
 #todo this is the test data
-def read_table_data():
-    f = open("C:/Users\CaLs_Rig\PycharmProjects\Project3\Program\zip_code_response.html", mode="r")
-    newSoup = BeautifulSoup(f, "html5lib")
-    f.close()
+def read_table_data(): # and make some soup out of it
+    try:
+        f = open("C:/Users/Lope/PycharmProjects/Project3/Seperator/zip_code_response.html", mode="r")
+        # make some new soup for our application
+        newSoup = BeautifulSoup(f, "html5lib")
+        f.close()
+        return newSoup
 
-    zip_warning_file = open("ziplistWarning.txt",mode="w+")
+    except IOError as ioerror:
+        print("Problem trying to read in weather information" + str(ioerror))
+
+
+
 #print(newSoup.prettify())
 
 # extracts the text i want but there are so many extra strings still need to narrow it down

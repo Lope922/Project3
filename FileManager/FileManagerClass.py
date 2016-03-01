@@ -1,4 +1,5 @@
 import os
+import shutil
 
 class CustomFileManager:
     def __init__(self):
@@ -6,35 +7,32 @@ class CustomFileManager:
         # file = "filename"
         # dir = os.path.dirname("/ResponseInfo")
         return self
+#C:\Users\Lope\PycharmProjects\Project3
+an_easy_path = "C:/Users/Lope/PycharmProjects/Project3/Seperator/"
 
-   # creates the path to save all the temp files created then destroyed.
+def chk_dir_exists():
+    if os.path.isdir(an_easy_path):
+            #os.path.exists(relative_path + "/Response_info"):
+        print("path does already exist")
+    else:
+       initialize_directory()
+
 def initialize_directory():
-    #todo fix bug here for differnt environments
-    print("program is working out of + " + str(os.path.curdir))
-    if os.path.isdir("Response_Info"):
-        print("we are good the path to store the response info in is made.")
-        open("C:/Users/CaLs_Rig/PycharmProjects/Project3/Program/Response_info/floodinfo.txt", mode="w+")
-    else:
-        os.mkdir("Response_info")
 
+    os.mkdir(an_easy_path)
+    print("you may want to find where else seperator directories were made")
 
-# this requires program to have access and import os.path. does not work yet. will fix one program is flowing correctly.
-def remove_old_files():
-    os.rmdir("C:/Users/CaLs_Rig/PycharmProjects/Project3/Program/Response_info")
+# todo don't run cleanup until have made a sucessfull commit in this branch
+def run_clean_up():
+    try:
+        #if os.path.isdir("Response_info"):
+        # this will remove the tree and its entire contents [tread carefully here]
+        shutil.rmtree(an_easy_path)
+        #os.remove("file1")
+        #os.remove("file2")
+        #os.remove("file3")
+    except Exception as noGood:
 
+        print("something bad happened windows cannot find the path specified " + str(noGood)) # see what happens when this error message is thrown to
+        #better define this problem.
 
-# this method checks that a file has been made in Visual studio, and tries creates a request for the zip codes within a
-# given area
-def chk_file():
-    if os.path.isfile('C:/Users/CaLs_Rig/PycharmProjects/Project3/Program/Response_info/users_zip_code.txt'):
-    #if os.path.isfile('/Program/Response_info/users_zip_code.txt'):
-        print('i have found the file')
-    # may want to check length
-    #    print("The file contains some bytes")
-    #if the path exists return true
-        True
-
-    else:
-        print("file could not be found or has not been created.")
-    #need to double check this logic
-        False
